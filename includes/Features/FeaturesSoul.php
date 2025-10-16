@@ -33,7 +33,7 @@ class FeaturesSoul
     public function registerGutenbergBlocks(): void
     {
 
-        CustomBlocks::registerBlocks();
+        new CustomBlocks;
     }
 
     /**

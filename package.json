@@ -5,8 +5,13 @@
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"watch": "webpack --watch --mode=development --config webpack.custom.config.js",
-		"build": "webpack --mode=production --config webpack.custom.config.js"
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "webpack --watch --mode=development --config webpack.gutenberg.config.js",
+		"build": "webpack --mode=production --config webpack.gutenberg.config.js"
 	},
 	"scriptsForGutenbergCompelling": {
 		"format": "wp-scripts format",
@@ -40,7 +45,8 @@
 		"terser-webpack-plugin": "^5.3.10",
 		"webpack": "^5.93.0",
 		"webpack-cli": "^5.1.4",
-		"webpack-dev-server": "^5.0.4"
+		"webpack-dev-server": "^5.0.4",
+		"webpack-merge": "^6.0.1"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.3.0",

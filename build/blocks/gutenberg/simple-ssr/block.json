@@ -1,0 +1,20 @@
+{
+  "apiVersion": 3,
+  "name": "mxsfwn/simple-ssr",
+  "title": "Simple SSR",
+  "category": "mxsfwn-wppgnext",
+  "icon": "layout",
+  "description": "A simple SSR block",
+  "attributes": {
+    "text": {
+      "type": "string",
+      "default": "Simple SSR"
+    }
+  },
+  "style": "file:./style.scss",
+  "render": "file:./render.php",
+  "keywords": [
+    "simple",
+    "ssr"
+  ]
+}
