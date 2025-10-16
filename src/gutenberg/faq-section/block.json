@@ -1,0 +1,29 @@
+{
+  "apiVersion": 3,
+  "name": "mxsfwn/faq-section",
+  "title": "FAQ Section",
+  "category": "mxsfwn-general",
+  "description": "Display a list of FAQ items",
+  "icon": "layout",
+  "keywords": [
+    "faq",
+    "items",
+    "list"
+  ],
+  "supports": {
+    "html": false,
+    "anchor": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Frequently asked questions"
+    },
+    "className": {
+      "type": "string"
+    }
+  },
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}
