@@ -1,1 +1,1 @@
-import './simple-ssr';
+import './ssr-simple';

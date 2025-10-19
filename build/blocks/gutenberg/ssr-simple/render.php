@@ -7,7 +7,7 @@ if (! defined('ABSPATH')) {
 $text = $attributes['text'] ?? 'Simple SSR';
 ?>
 <div <?php echo get_block_wrapper_attributes(); ?>>
-    <div class="wppg-next-simple-ssr">
-        <h1><?php echo esc_html($text); ?></h1>
+    <div class="wppg-next-ssr-simple bg-bright">
+        <h1 class="text-white text-[16px] capitalize"><?php echo esc_html($text); ?></h1>
     </div>
 </div>

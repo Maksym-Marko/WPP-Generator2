@@ -138,5 +138,13 @@ class WPEnqueueScripts
             [$fontAwesomeHandle],
             $this->version
         );
+
+        // Tailwind CSS
+        wp_enqueue_style(
+            "{$this->uniqueString}-tailwind-css",
+            $this->pluginUrl . 'build/css/style.css',
+            [],
+            $this->version
+        );
     }
 }

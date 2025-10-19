@@ -1,6 +1,6 @@
 {
   "apiVersion": 3,
-  "name": "mxsfwn/simple-ssr",
+  "name": "mxsfwn/ssr-simple",
   "title": "Simple SSR",
   "category": "mxsfwn-wppgnext",
   "icon": "layout",
@@ -13,8 +13,5 @@
   },
   "style": "file:./style.scss",
   "render": "file:./render.php",
-  "keywords": [
-    "simple",
-    "ssr"
-  ]
+  "keywords": ["simple", "ssr"]
 }
