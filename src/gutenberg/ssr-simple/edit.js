@@ -2,11 +2,14 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import './editor.css';
 import metadata from './block.json';
 
 export default function Edit({ attributes, setAttributes }) {
   const { text } = attributes;
-  const blockProps = useBlockProps();
+  const blockProps = useBlockProps({
+    className: 'wppg-next-ssr-simple-editor',
+  });
 
   return (
     <>

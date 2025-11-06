@@ -5,11 +5,16 @@
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
 	"scripts": {		
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
 		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
 		"watch:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"watch:js": "webpack --watch --mode=development --config webpack.custom.config.js",
-		"build:js": "webpack --mode=production --config webpack.custom.config.js",
-		"dev": "npm-run-all --parallel watch:css watch:js",
+		"build:js": "wp-scripts build --config webpack.gutenberg.config.js",
+		"watch:js": "wp-scripts start --config webpack.gutenberg.config.js",
+		"start": "npm-run-all --parallel watch:css watch:js",
 		"build": "npm-run-all build:css build:js"
 	},
 	"scriptsForGutenbergCompelling": {

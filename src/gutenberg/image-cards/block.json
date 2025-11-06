@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mxsfwn/image-cards",
+	"version": "1.0.0",
+	"title": "Image Cards",
+	"category": "mxsfwn-wppgnext",
+	"icon": "grid-view",
+	"description": "Add Image Cards",
+	"supports": {
+		"html": false,
+		"align": [
+			"left",
+			"right",
+			"full",
+			"center"
+		]
+	},
+	"attributes": {
+		"blockBackgroundColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorStyle": "file:./editor.css",
+	"style": "file:./style.css",
+	"textdomain": "wpp-generator-next"
+}

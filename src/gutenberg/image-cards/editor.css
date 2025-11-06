@@ -1,0 +1,5 @@
+.wp-block-mxsfwn-image-cards .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+}

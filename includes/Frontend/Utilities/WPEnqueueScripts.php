@@ -45,9 +45,6 @@ class WPEnqueueScripts
         add_action("wp_enqueue_scripts", [$this, 'scripts']);
 
         add_action('wp_enqueue_scripts', [$this, 'dequeueApiFetch'], 100);
-
-        // Enqueue for editor part
-        add_action('enqueue_block_editor_assets', [$this, 'editorScripts']);
     }
 
     /**
@@ -143,23 +140,6 @@ class WPEnqueueScripts
             $this->version
         );
 
-        // Tailwind CSS
-        wp_enqueue_style(
-            "{$this->uniqueString}-tailwind-css",
-            $this->pluginUrl . 'build/css/style.css',
-            [],
-            $this->version
-        );
-    }
-
-    /**
-     * Enqueue styles and scripts for 
-     * the editor part.
-     * 
-     * @return void
-     */
-    public function editorScripts(): void
-    {
         // Tailwind CSS
         wp_enqueue_style(
             "{$this->uniqueString}-tailwind-css",

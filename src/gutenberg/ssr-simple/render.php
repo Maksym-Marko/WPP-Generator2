@@ -5,9 +5,11 @@ if (! defined('ABSPATH')) {
 }
 
 $text = $attributes['text'] ?? 'Simple SSR';
+
+$blockProps = get_block_wrapper_attributes(array(
+    'class' => 'bg-blue-600 p-10 wppg-next-ssr-simple-render'
+));
 ?>
-<div <?php echo get_block_wrapper_attributes(); ?>>
-    <div class="wppg-next-ssr-simple bg-amber-600 text-white">
-        <h1 class="text-white text-[16px] capitalize"><?php echo esc_html($text); ?></h1>
-    </div>
+<div <?php echo $blockProps; ?>>
+    <div class="text-white text-3xl capitalize font-bold"><?php echo esc_html($text); ?></div>
 </div>

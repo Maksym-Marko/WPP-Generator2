@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mxsfwn/image-cards-item",
+  "version": "1.0.0",
+  "title": "Image Cards Item",
+  "category": "mxsfwn-wppgnext",
+  "icon": "format-image",
+  "description": "Add Image Cards Item",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "hotelName": {
+      "type": "string",
+      "default": "Image Name"
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": "Image Alt Text"
+    },
+    "imageBackgroundOpacity": {
+      "type": "number",
+      "default": 0.45
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": "#"
+    }
+  },
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "textdomain": "wpp-generator-next"
+}
