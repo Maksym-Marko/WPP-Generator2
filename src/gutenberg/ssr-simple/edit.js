@@ -14,12 +14,12 @@ export default function Edit({ attributes, setAttributes }) {
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__('Text Settings', 'wpp-generator-next')}>
+        <PanelBody title={__('Text Settings', metadata.textdomain)}>
           <TextControl
-            label={__('Text', 'wpp-generator-next')}
+            label={__('Text', metadata.textdomain)}
             value={text}
             onChange={(value) => setAttributes({ text: value })}
-            help={__('Enter the text to display in the block', 'wpp-generator-next')}
+            help={__('Enter the text to display in the block', metadata.textdomain)}
             __next40pxDefaultSize={true}
             __nextHasNoMarginBottom={true}
           />

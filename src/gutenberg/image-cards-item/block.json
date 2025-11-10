@@ -4,6 +4,7 @@
 	"name": "mxsfwn/image-cards-item",
 	"version": "1.0.0",
 	"title": "Image Cards Item",
+	"parent": ["mxsfwn/image-cards"],
 	"category": "mxsfwn-wppgnext",
 	"icon": "format-image",
 	"description": "Add Image Cards Item",

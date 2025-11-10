@@ -1,5 +1,6 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import metadata from './block.json';
 
 export default function save({ attributes }) {
 	const { hotelName, imageId, imageUrl, imageAlt, linkUrl, imageBackgroundOpacity } = attributes;
@@ -8,7 +9,7 @@ export default function save({ attributes }) {
 	let style = {};
 	if (imageBackgroundOpacity) {
 		style.opacity = imageBackgroundOpacity;
-		style['--tw-bg-opacity'] = imageBackgroundOpacity + '!important';
+		style['--tw-bg-opacity'] = imageBackgroundOpacity + '';
 	}
 
 	return (
@@ -29,7 +30,7 @@ export default function save({ attributes }) {
 			) : (
 				<div className="flex items-center justify-center w-full h-full text-center">
 					<div className="p-10">
-						<p>{__('Image Placeholder', 'wpp-generator-next')}<br />{__('600×600px', 'wpp-generator-next')}</p>
+						<p>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</p>
 					</div>
 				</div>
 			)}

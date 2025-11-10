@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mxsfwn/review-box",
+  "version": "1.0.0",
+  "title": "Review Box",
+  "parent": [
+    "mxsfwn/multiple-slider-horizontal-section"
+  ],
+  "category": "mxsfwn-wppgnext",
+  "icon": "star-filled",
+  "description": "Add Review Box with customer testimonial and stats",
+  "supports": {
+    "html": false,
+    "align": [
+      "left",
+      "right",
+      "full",
+      "center"
+    ]
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "testimonial": {
+      "type": "string",
+      "default": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”"
+    },
+    "customerName": {
+      "type": "string",
+      "default": "John Doe"
+    },
+    "customerTitle": {
+      "type": "string",
+      "default": "General Manager at The Promoted Group"
+    },
+    "linkText": {
+      "type": "string",
+      "default": "Learn more"
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "avatarId": {
+      "type": "number",
+      "default": 0
+    },
+    "avatarUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "avatarAlt": {
+      "type": "string",
+      "default": "Customer Photo"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "statsBgColor": {
+      "type": "string",
+      "default": "#F2F2E9"
+    }
+  },
+  "textdomain": "wpp-generator-next",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

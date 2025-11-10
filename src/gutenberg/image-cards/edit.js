@@ -28,15 +28,15 @@ export default function edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Image Cards Settings', 'wpp-generator-next')}>
+				<PanelBody title={__('Image Cards Settings', metadata.textdomain)}>
 					<PanelColorSettings
-						title={__('Background Color', 'wpp-generator-next')}
+						title={__('Background Color', metadata.textdomain)}
 						initialOpen={false}
 						colorSettings={[
 							{
 								value: blockBackgroundColor,
 								onChange: value => setAttributes({ blockBackgroundColor: value }),
-								label: __('Background Color', 'wpp-generator-next'),
+								label: __('Background Color', metadata.textdomain),
 							},
 						]}
 					/>

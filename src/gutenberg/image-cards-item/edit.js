@@ -29,32 +29,32 @@ export default function edit({ attributes, setAttributes }) {
 
 	if (imageBackgroundOpacity) {
 		style.opacity = imageBackgroundOpacity;
-		style['--tw-bg-opacity'] = imageBackgroundOpacity + '!important';
+		style['--tw-bg-opacity'] = imageBackgroundOpacity + '';
 	}
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Link Settings', 'wpp-generator-next')}>
+				<PanelBody title={__('Link Settings', metadata.textdomain)}>
 
 					{/* Link Label */}
 					<TextControl
-						label={__('Link Label', 'wpp-generator-next')}
+						label={__('Link Label', metadata.textdomain)}
 						value={hotelName}
 						onChange={value => setAttributes({ hotelName: value })}
-						placeholder={__('Enter link label...', 'wpp-generator-next')}
+						placeholder={__('Enter link label...', metadata.textdomain)}
 					/>
 
 					{/* Link URL */}
 					<TextControl
-						label={__('Link URL', 'wpp-generator-next')}
+						label={__('Link URL', metadata.textdomain)}
 						value={linkUrl}
 						onChange={value => setAttributes({ linkUrl: value })}
-						placeholder={__('Paste link here...', 'wpp-generator-next')}
+						placeholder={__('Paste link here...', metadata.textdomain)}
 					/>
 				</PanelBody>
 
-				<PanelBody title={__('Image Settings', 'wpp-generator-next')}>
+				<PanelBody title={__('Image Settings', metadata.textdomain)}>
 
 					{/* Image */}
 					{imageUrl && (
@@ -72,16 +72,16 @@ export default function edit({ attributes, setAttributes }) {
 							<div className="mb-4">
 
 								<TextControl
-									label={__('Image Alt Text', 'wpp-generator-next')}
+									label={__('Image Alt Text', metadata.textdomain)}
 									value={imageAlt}
 									onChange={value => setAttributes({ imageAlt: value })}
-									placeholder={__('Enter image alt text...', 'wpp-generator-next')}
+									placeholder={__('Enter image alt text...', metadata.textdomain)}
 								/>
 							</div>
 
 							{/* Image background opacity */}
 							<RangeControl
-								label={__('Image Background Opacity', 'wpp-generator-next')}
+								label={__('Image Background Opacity', metadata.textdomain)}
 								value={imageBackgroundOpacity}
 								onChange={value => setAttributes({ imageBackgroundOpacity: value })}
 								min={0}
@@ -103,7 +103,7 @@ export default function edit({ attributes, setAttributes }) {
 											variant="secondary"
 											className="editor-post-featured-image__toggle"
 										>
-											{imageUrl ? __('Replace Image', 'wpp-generator-next') : __('Choose Image', 'wpp-generator-next')}
+											{imageUrl ? __('Replace Image', metadata.textdomain) : __('Choose Image', metadata.textdomain)}
 										</Button>
 										{imageUrl && (
 											<Button
@@ -111,7 +111,7 @@ export default function edit({ attributes, setAttributes }) {
 												variant="link"
 												isDestructive
 											>
-												{__('Remove Image', 'wpp-generator-next')}
+												{__('Remove Image', metadata.textdomain)}
 											</Button>
 										)}
 									</div>
@@ -133,7 +133,7 @@ export default function edit({ attributes, setAttributes }) {
 						tagName="span"
 						value={hotelName}
 						onChange={value => setAttributes({ hotelName: value })}
-						placeholder={__('Hotel name...', 'wpp-generator-next')}
+						placeholder={__('Hotel name...', metadata.textdomain)}
 						className="text-inherit"
 					/>
 				</div>
@@ -147,7 +147,7 @@ export default function edit({ attributes, setAttributes }) {
 				) : (
 					<div className="flex items-center justify-center w-full h-full text-center">
 						<div className="p-10">
-							<p>{__('Image Placeholder', 'wpp-generator-next')}<br />{__('600×600px', 'wpp-generator-next')}</p>
+							<p>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</p>
 						</div>
 					</div>
 				)}

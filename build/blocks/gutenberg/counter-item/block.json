@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mxsfwn/counter-item",
+  "version": "1.0.0",
+  "title": "Counter Item",
+  "parent": [
+    "mxsfwn/review-box"
+  ],
+  "category": "mxsfwn-wppgnext",
+  "icon": "chart-line",
+  "description": "Add Counter Item",
+  "supports": {
+    "html": false,
+    "align": [
+      "left",
+      "right",
+      "full",
+      "center"
+    ]
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "prefix": {
+      "type": "string",
+      "default": ""
+    },
+    "number": {
+      "type": "string",
+      "default": "25"
+    },
+    "postfix": {
+      "type": "string",
+      "default": "%"
+    },
+    "text": {
+      "type": "string",
+      "default": "Uplift in reservations"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    }
+  },
+  "textdomain": "wpp-generator-next",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

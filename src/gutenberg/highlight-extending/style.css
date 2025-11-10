@@ -1,0 +1,12 @@
+.highlight-strong-yellow strong {
+    background-color: yellow;
+}
+
+.highlight-strong-blue strong {
+    background-color: blue;
+    color: white;
+}
+
+.highlight-strong-green strong {
+    background-color: green;
+}

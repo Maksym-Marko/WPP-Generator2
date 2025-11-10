@@ -1,0 +1,12 @@
+@media (min-width: 992px) {
+    .mxsfwn-multiple-slider-horizontal-section .slick-slide {
+        opacity: 0.3;
+        transform: scale(0.95);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+}
+
+.mxsfwn-multiple-slider-horizontal-section .slick-slide.slick-center {
+    opacity: 1;
+    transform: scale(1);
+}
