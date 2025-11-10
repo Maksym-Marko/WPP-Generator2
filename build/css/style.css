@@ -8,12 +8,9 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
-    --color-yellow-500: oklch(79.5% 0.184 86.047);
-    --color-green-500: oklch(72.3% 0.219 149.579);
+    --color-lime-500: oklch(76.8% 0.233 130.85);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
-    --color-purple-500: oklch(62.7% 0.265 303.9);
-    --color-pink-500: oklch(65.6% 0.241 354.308);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-300: oklch(87.2% 0.01 258.338);
@@ -220,19 +217,28 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
+  .col-span-15 {
+    grid-column: span 15 / span 15;
+  }
   .container {
     width: 100%;
+    @media (width >= 30rem) {
+      max-width: 30rem;
+    }
     @media (width >= 40rem) {
       max-width: 40rem;
     }
     @media (width >= 48rem) {
       max-width: 48rem;
     }
-    @media (width >= 64rem) {
-      max-width: 64rem;
+    @media (width >= 62rem) {
+      max-width: 62rem;
     }
-    @media (width >= 80rem) {
-      max-width: 80rem;
+    @media (width >= 75rem) {
+      max-width: 75rem;
+    }
+    @media (width >= 85rem) {
+      max-width: 85rem;
     }
     @media (width >= 96rem) {
       max-width: 96rem;
@@ -358,6 +364,9 @@
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .grid-cols-20 {
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -431,8 +440,8 @@
   .bg-gray-950 {
     background-color: var(--color-gray-950);
   }
-  .bg-red-500 {
-    background-color: var(--color-red-500);
+  .bg-lime-500 {
+    background-color: var(--color-lime-500);
   }
   .bg-stone-800 {
     background-color: var(--color-stone-800);
@@ -639,11 +648,6 @@
       justify-content: space-between;
     }
   }
-  .sm\:bg-green-500 {
-    @media (width >= 40rem) {
-      background-color: var(--color-green-500);
-    }
-  }
   .md\:mb-0 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 0);
@@ -664,29 +668,14 @@
       align-items: center;
     }
   }
-  .md\:bg-yellow-500 {
-    @media (width >= 48rem) {
-      background-color: var(--color-yellow-500);
-    }
-  }
   .md\:px-\[2\.2rem\] {
     @media (width >= 48rem) {
       padding-inline: 2.2rem;
     }
   }
   .lg\:grid-cols-5 {
-    @media (width >= 64rem) {
+    @media (width >= 62rem) {
       grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-  }
-  .lg\:bg-purple-500 {
-    @media (width >= 64rem) {
-      background-color: var(--color-purple-500);
-    }
-  }
-  .xl\:bg-pink-500 {
-    @media (width >= 80rem) {
-      background-color: var(--color-pink-500);
     }
   }
 }
