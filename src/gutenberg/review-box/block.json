@@ -4,7 +4,7 @@
 	"name": "mxsfwn/review-box",
 	"version": "1.0.0",
 	"title": "Review Box",
-	"parent": ["mxsfwn/multiple-slider-horizontal-section"],
+	"parent": ["mxsfwn/slider"],
 	"category": "mxsfwn-wppgnext",
 	"icon": "star-filled",
 	"description": "Add Review Box with customer testimonial and stats",

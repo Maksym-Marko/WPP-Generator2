@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "title": "Review Box",
   "parent": [
-    "mxsfwn/multiple-slider-horizontal-section"
+    "mxsfwn/slider"
   ],
   "category": "mxsfwn-wppgnext",
   "icon": "star-filled",

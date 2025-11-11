@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mxsfwn/multiple-slider-horizontal-section",
+  "name": "mxsfwn/slider",
   "version": "1.0.0",
-  "title": "Multiple Slider Horizontal",
+  "title": "Slider",
   "category": "mxsfwn-wppgnext",
   "icon": "align-wide",
   "description": "Add a multiple slider horizontal section with navigation controls",
@@ -22,5 +22,6 @@
   },
   "textdomain": "wpp-generator-next",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js"
 }

@@ -10,7 +10,7 @@ export default function save({ attributes }) {
 	return (
 		<section {...blockProps} className={`${blockProps.className} mxsfwn-multiple-slider-horizontal-section`}>
 			<div className="container max-w-[1200px] mx-auto relative px-4 md:px-[2.2rem]">
-				<div className="flex flex-col sm:flex-row justify-center sm:justify-between">
+				<div className="flex flex-col sm:flex-row justify-between">
 					<div className="w-full max-w-72"></div>
 					<div className="flex justify-end w-full max-w-40 mxsfwn-slider-nav-wrapper self-end">
 						<div className="w-full flex justify-between max-w-36">

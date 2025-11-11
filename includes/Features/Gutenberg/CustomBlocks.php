@@ -16,6 +16,9 @@ class CustomBlocks
     public function __construct()
     {
 
+        // Enqueue external scripts
+        add_action('wp_enqueue_scripts', [$this, 'enqueueExternalScripts']);
+
         // Register blocks
         add_action('init', [$this, 'registerBlocks']);
 
@@ -53,6 +56,31 @@ class CustomBlocks
         ]);
 
         return $categories;
+    }
+
+    /**
+     * Enqueue external scripts
+     */
+    public function enqueueExternalScripts(): void
+    {
+
+        /**
+         * Here an example of using a external script
+         */
+        wp_enqueue_script(
+            'slick-carousel',
+            'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js',
+            ['jquery'],
+            '1.9.0',
+            false
+        );
+
+        wp_enqueue_style(
+            'slick-carousel-css',
+            'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css',
+            [],
+            '1.9.0'
+        );
     }
 
     /**
