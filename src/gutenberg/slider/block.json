@@ -16,12 +16,11 @@
 	},
 	"attributes": {
 		"backgroundColor": {
-			"type": "string",
-			"default": "bg-neutral-white"
+			"type": "string"
 		}
 	},
-	"textdomain": "wpp-generator-next",
 	"editorStyle": "file:./editor.css",
 	"style": "file:./style.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+	"textdomain": "wpp-generator-next"
 }

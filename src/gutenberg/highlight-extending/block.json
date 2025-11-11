@@ -22,6 +22,6 @@
 			}
 		}
 	},
-	"textdomain": "wpp-generator-next",
-	"style": "file:./style.css"
+	"style": "file:./style.css",
+	"textdomain": "wpp-generator-next"
 }

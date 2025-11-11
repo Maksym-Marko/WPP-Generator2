@@ -47,7 +47,7 @@
       "type": "string"
     }
   },
-  "textdomain": "wpp-generator-next",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "textdomain": "wpp-generator-next"
 }

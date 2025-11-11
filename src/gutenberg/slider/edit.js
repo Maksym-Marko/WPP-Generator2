@@ -10,7 +10,7 @@ const ALLOWED_BLOCKS = [
 
 const TEMPLATE = [
 	['mxsfwn/review-box', {
-		backgroundColor: 'bg-gray-300'
+		backgroundColor: '#C3D6FF'
 	}]
 ];
 

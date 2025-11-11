@@ -2,7 +2,7 @@
 
 This plugin was generated using the [WPPG-NEXT Generator](https://wppg-next.markomaksym.com.ua/) - a comprehensive WordPress plugin boilerplate with modern development tools, Gutenberg blocks, REST API endpoints, and React frontend components.
 
-**Current Version**: WPPG Next Version 1.3.0 (Stable)
+**Current Version**: WPPG Next Version 1.4.0 (Stable)
 
 **Important**: The generator automatically creates unique prefixes for all classes, functions, and constants to prevent conflicts with other plugins. This ensures your plugin can coexist safely with any other WordPress plugins.
 
@@ -57,7 +57,7 @@ The generator will create a customized version with unique prefixes and your spe
 
 4. **Build assets for development**:
    ```bash
-   npm run watch
+   npm run start
    ```
 
 5. **Build assets for production**:
@@ -87,7 +87,7 @@ The generator will create a customized version with unique prefixes and your spe
 - `npm run start` - Start Gutenberg blocks development (WordPress scripts)
 - `npm run build` - Build Gutenberg blocks for production
 
-**Note**: The package.json contains two script configurations:
+**Note**: The package.json contains three script configurations:
 - `"scripts"` - For JavaScript/React development (default)
 - `"scriptsForGutenbergCompelling"` - For Gutenberg blocks development only
 
@@ -111,6 +111,15 @@ npm run start
 npm run build
 ```
 
+**For Entire Scripts Compiling Development:**
+```bash
+# Start development
+npm run start
+
+# Build for production
+npm run build
+```
+
 ### Switching Development Modes
 
 **To switch to Gutenberg-only development:**
@@ -119,11 +128,17 @@ npm run build
 3. Save the file
 4. Run `npm run start` for development or `npm run build` for production
 
-**To switch back to JavaScript/React development:**
+**To switch to JavaScript/React development:**
 1. Open `package.json`
 2. Replace `"scriptsForGutenbergCompelling"` with the original `"scripts"`
 3. Save the file
 4. Run `npm run watch` for development or `npm run build` for production
+
+**To compile entire code:**
+1. Open `package.json`
+2. Replace `"scriptsForEntireCompelling"` with the original `"scripts"`
+3. Save the file
+4. Run `npm run start` for development or `npm run build` for production
 
 **Important**: Only one development mode can be active at a time. Choose based on your current development focus.
 
@@ -139,6 +154,7 @@ npm run build
 ### Frontend Features
 - **React Components**: Modern React app with Redux Toolkit
 - **Shortcodes**: Easy shortcode generation system
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
 - **Asset Management**: Optimized CSS/JS loading
 
 ### Gutenberg Blocks
@@ -163,6 +179,7 @@ npm run build
 ### Build Configuration
 - **Webpack**: Custom configuration for multiple entry points
 - **SCSS**: Preprocessor with source maps
+- **Tailwind CSS**: Utility-first CSS framework with custom configuration
 - **Code Splitting**: Vendor libraries optimization
 - **Production**: Minification and optimization
 
@@ -181,6 +198,8 @@ The plugin includes several example files that need to be renamed for developmen
 wpp-generator-next/
 ├── README.md
 ├── assets
+│   ├── css
+│   │   └── style.css
 │   ├── gutenberg
 │   │   └── content-slider
 │   │       ├── css
@@ -214,97 +233,49 @@ wpp-generator-next/
 │   │       ├── index.js
 │   │       ├── index.js.LICENSE.txt
 │   │       └── index.js.map
+│   ├── blocks
+│   │   ├── blocks-rtl.css
+│   │   ├── blocks.asset.php
+│   │   ├── blocks.css
+│   │   ├── blocks.js
+│   │   ├── gutenberg
+│   │   │   ├── counter-item
+│   │   │   │   └── block.json
+│   │   │   ├── highlight-extending
+│   │   │   │   └── block.json
+│   │   │   ├── image-cards
+│   │   │   │   └── block.json
+│   │   │   ├── image-cards-item
+│   │   │   │   └── block.json
+│   │   │   ├── review-box
+│   │   │   │   └── block.json
+│   │   │   ├── slider
+│   │   │   │   └── block.json
+│   │   │   └── ssr-simple
+│   │   │       ├── block.json
+│   │   │       └── render.php
+│   │   ├── style-blocks-rtl.css
+│   │   └── style-blocks.css
+│   ├── css
+│   │   └── style.css
 │   ├── dependencies
 │   │   └── vendors
 │   │       ├── index.js
 │   │       ├── index.js.LICENSE.txt
 │   │       └── index.js.map
-│   ├── frontend
-│   │   ├── index.js
-│   │   └── react-js
-│   │       ├── index.css
-│   │       ├── index.css.map
-│   │       ├── index.js
-│   │       ├── index.js.LICENSE.txt
-│   │       └── index.js.map
-│   └── gutenberg
-│       ├── content-slider
-│       │   ├── block.json
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── extending
-│       │   ├── block.json
-│       │   ├── index.asset.php
-│       │   └── index.js
-│       ├── full-width-section-image
-│       │   ├── block.json
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── image-section
-│       │   ├── block.json
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── nested-blocks
-│       │   ├── block.json
-│       │   ├── child-blocks
-│       │   │   └── block-one
-│       │   │       ├── block.json
-│       │   │       ├── index-rtl.css
-│       │   │       ├── index.asset.php
-│       │   │       ├── index.css
-│       │   │       ├── index.js
-│       │   │       ├── style-index-rtl.css
-│       │   │       └── style-index.css
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── responsive-spacer
-│       │   ├── block.json
-│       │   ├── index.asset.php
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── server-side-rendering
-│       │   ├── block.json
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       ├── simple-image
-│       │   ├── block.json
-│       │   ├── index-rtl.css
-│       │   ├── index.asset.php
-│       │   ├── index.css
-│       │   ├── index.js
-│       │   ├── style-index-rtl.css
-│       │   └── style-index.css
-│       └── simple-text
-│           ├── block.json
-│           ├── index.asset.php
+│   └── frontend
+│       ├── index.js
+│       └── react-js
+│           ├── index.css
+│           ├── index.css.map
 │           ├── index.js
-│           ├── style-index-rtl.css
-│           └── style-index.css
+│           ├── index.js.LICENSE.txt
+│           └── index.js.map
 ├── composer.json
 ├── composer.lock
 ├── example.cursorrules
 ├── example.gitignore
+├── generate-structure.js
 ├── includes
 │   ├── Activate
 │   │   ├── AIRobotsDataTableMigration.php
@@ -391,9 +362,7 @@ wpp-generator-next/
 │   │   │   └── init.php
 │   │   ├── FeaturesSoul.php
 │   │   └── Gutenberg
-│   │       ├── CustomBlocks.php
-│   │       └── components
-│   │           └── server-side-rendering.php
+│   │       └── CustomBlocks.php
 │   ├── Frontend
 │   │   ├── FrontendSoul.php
 │   │   ├── Utilities
@@ -505,73 +474,54 @@ wpp-generator-next/
 │   │               └── taskList
 │   │                   └── taskListSlice.js
 │   └── gutenberg
-│       ├── content-slider
+│       ├── counter-item
 │       │   ├── block.json
 │       │   ├── edit.js
-│       │   ├── editor.scss
+│       │   ├── editor.css
 │       │   ├── index.js
 │       │   ├── save.js
-│       │   └── style.scss
-│       ├── extending
+│       │   └── style.css
+│       ├── highlight-extending
 │       │   ├── block.json
-│       │   └── index.js
-│       ├── full-width-section-image
-│       │   ├── block.json
-│       │   ├── edit.js
-│       │   ├── editor.scss
 │       │   ├── index.js
-│       │   ├── save.js
-│       │   └── style.scss
-│       ├── image-section
+│       │   └── style.css
+│       ├── image-cards
 │       │   ├── block.json
 │       │   ├── edit.js
-│       │   ├── editor.scss
+│       │   ├── editor.css
 │       │   ├── index.js
 │       │   ├── save.js
-│       │   └── style.scss
-│       ├── nested-blocks
-│       │   ├── block.json
-│       │   ├── child-blocks
-│       │   │   └── block-one
-│       │   │       ├── block.json
-│       │   │       ├── edit.js
-│       │   │       ├── editor.scss
-│       │   │       ├── index.js
-│       │   │       ├── save.js
-│       │   │       └── style.scss
-│       │   ├── edit.js
-│       │   ├── editor.scss
-│       │   ├── index.js
-│       │   ├── save.js
-│       │   └── style.scss
-│       ├── responsive-spacer
+│       │   └── style.css
+│       ├── image-cards-item
 │       │   ├── block.json
 │       │   ├── edit.js
-│       │   ├── editor.scss
+│       │   ├── editor.css
 │       │   ├── index.js
 │       │   ├── save.js
-│       │   └── style.scss
-│       ├── server-side-rendering
+│       │   └── style.css
+│       ├── index.js
+│       ├── review-box
 │       │   ├── block.json
 │       │   ├── edit.js
-│       │   ├── editor.scss
+│       │   ├── editor.css
 │       │   ├── index.js
 │       │   ├── save.js
-│       │   └── style.scss
-│       ├── simple-image
+│       │   └── style.css
+│       ├── slider
 │       │   ├── block.json
 │       │   ├── edit.js
-│       │   ├── editor.scss
+│       │   ├── editor.css
 │       │   ├── index.js
 │       │   ├── save.js
-│       │   └── style.scss
-│       └── simple-text
+│       │   ├── style.css
+│       │   └── view.js
+│       └── ssr-simple
 │           ├── block.json
 │           ├── edit.js
-│           ├── editor.scss
+│           ├── editor.css
 │           ├── index.js
-│           ├── save.js
-│           └── style.scss
+│           ├── render.php
+│           └── style.css
 ├── uninstall.php
 ├── webpack.custom.config.js
 ├── webpack.gutenberg.config.js
@@ -624,7 +574,7 @@ composer dump-autoload
 ### Development Tips
 
 1. **Use the `.cursorrules` file** for AI-assisted development
-2. **Run `npm run watch`** during development for automatic rebuilding
+2. **Run `npm run start`** during development for automatic rebuilding
 3. **Check browser console** for JavaScript errors
 4. **Use WordPress debug mode** for PHP errors
 5. **Test in different environments** before deployment

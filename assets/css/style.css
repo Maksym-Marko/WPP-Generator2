@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-    --breakpoint-xs: 30rem;
     /* 480px */
-    --breakpoint-sm: 40rem;
+    --breakpoint-xs: 30rem;
     /* 640px */
-    --breakpoint-md: 48rem;
+    --breakpoint-sm: 40rem;
     /* 768px */
-    --breakpoint-lg: 62rem;
+    --breakpoint-md: 48rem;
     /* 992px */
-    --breakpoint-xl: 75rem;
+    --breakpoint-lg: 62rem;
     /* 1200px */
-    --breakpoint-xxl: 85rem;
+    --breakpoint-xl: 75rem;
     /* 1360px */
+    --breakpoint-xxl: 85rem;
 
     /* grid columns 13–20 */
     --grid-cols-13: repeat(13, minmax(0, 1fr));

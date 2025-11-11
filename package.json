@@ -1,21 +1,18 @@
 {
 	"name": "mxsfwn-npm-handler",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"description": "NPM Handler",
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"format": "wp-scripts format",
-		"lint:css": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
-		"watch:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
-		"watch:js": "wp-scripts start --config webpack.gutenberg.config.js",
-		"build:js": "wp-scripts build --config webpack.gutenberg.config.js",
-		"start": "npm-run-all --parallel watch:css watch:js",
-		"build": "npm-run-all build:css build:js"
+		"tailwind-css:watch": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
+		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"gutenberg-js:watch": "wp-scripts start --config webpack.gutenberg.config.js",
+		"gutenberg-js:build": "wp-scripts build --config webpack.gutenberg.config.js",
+		"native-js:watch": "webpack --watch --mode=development --config webpack.custom.config.js",
+		"native-js:build": "webpack --mode=production --config webpack.custom.config.js",
+		"start": "npm-run-all --parallel tailwind-css:watch gutenberg-js:watch native-js:watch",
+		"build": "npm-run-all tailwind-css:build gutenberg-js:build native-js:build"
 	},
 	"scriptsForGutenbergCompelling": {
 		"format": "wp-scripts format",
@@ -35,8 +32,18 @@
 		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
 		"watch:js": "webpack --watch --mode=development --config webpack.custom.config.js",
 		"build:js": "webpack --mode=production --config webpack.custom.config.js",
-		"dev": "npm-run-all --parallel watch:css watch:js",
+		"watch": "npm-run-all --parallel watch:css watch:js",
 		"build": "npm-run-all build:css build:js"
+	},
+	"scriptsForEntireCompelling": {
+		"tailwind-css:watch": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
+		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"gutenberg-js:watch": "wp-scripts start --config webpack.gutenberg.config.js",
+		"gutenberg-js:build": "wp-scripts build --config webpack.gutenberg.config.js",
+		"native-js:watch": "webpack --watch --mode=development --config webpack.custom.config.js",
+		"native-js:build": "webpack --mode=production --config webpack.custom.config.js",
+		"start": "npm-run-all --parallel tailwind-css:watch gutenberg-js:watch native-js:watch",
+		"build": "npm-run-all tailwind-css:build gutenberg-js:build native-js:build"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.9",
