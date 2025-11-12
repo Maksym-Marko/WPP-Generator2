@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "mxsfwn/slider",
-	"version": "1.0.0",
+	"version": "1.4.1",
 	"title": "Slider",
 	"category": "mxsfwn-wppgnext",
 	"icon": "align-wide",

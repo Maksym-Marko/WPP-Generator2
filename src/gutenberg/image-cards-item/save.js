@@ -18,7 +18,7 @@ export default function save({ attributes }) {
 			<div className="absolute top-0 left-0 w-full h-full bg-stone-800 bg-opacity-45" style={style}></div>
 
 			<div className="absolute top-0 left-0 w-full p-6 text-xl font-host">
-				<RichText.Content tagName="span" value={hotelName} className="text-inherit" />
+				<RichText.Content tagName="span" value={hotelName} className="text-white" />
 			</div>
 
 			{imageUrl ? (
@@ -29,8 +29,8 @@ export default function save({ attributes }) {
 				/>
 			) : (
 				<div className="flex items-center justify-center w-full h-full text-center">
-					<div className="p-10">
-						<p>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</p>
+					<div className="p-10 text-white">
+						<div>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</div>
 					</div>
 				</div>
 			)}

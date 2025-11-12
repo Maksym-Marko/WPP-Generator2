@@ -1,6 +1,7 @@
 {
   "apiVersion": 3,
   "name": "mxsfwn/ssr-simple",
+  "version": "1.4.1",
   "title": "Simple Server Side Rendering",
   "category": "mxsfwn-wppgnext",
   "icon": "layout",

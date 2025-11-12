@@ -1,12 +1,12 @@
 {
 	"name": "mxsfwn-npm-handler",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "NPM Handler",
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"tailwind-css:watch": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --minify",
 		"gutenberg-js:watch": "wp-scripts start --config webpack.gutenberg.config.js",
 		"gutenberg-js:build": "wp-scripts build --config webpack.gutenberg.config.js",
 		"native-js:watch": "webpack --watch --mode=development --config webpack.custom.config.js",

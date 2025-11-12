@@ -134,7 +134,7 @@ export default function edit({ attributes, setAttributes }) {
 						value={hotelName}
 						onChange={value => setAttributes({ hotelName: value })}
 						placeholder={__('Hotel name...', metadata.textdomain)}
-						className="text-inherit"
+						className="text-white"
 					/>
 				</div>
 
@@ -146,8 +146,8 @@ export default function edit({ attributes, setAttributes }) {
 					/>
 				) : (
 					<div className="flex items-center justify-center w-full h-full text-center">
-						<div className="p-10">
-							<p>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</p>
+						<div className="p-10 text-white">
+							<div>{__('Image Placeholder', metadata.textdomain)}<br />{__('600×600px', metadata.textdomain)}</div>
 						</div>
 					</div>
 				)}

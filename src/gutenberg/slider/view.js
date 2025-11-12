@@ -1,3 +1,5 @@
+$ = window.jQuery;
+
 /**
  * Slider Multiple Items.
  */

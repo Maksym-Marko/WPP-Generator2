@@ -34,3 +34,8 @@
     --grid-col-span-19: span 19 / span 19;
     --grid-col-span-20: span 20 / span 20;
 }
+
+/* This is a fake class to make Tailwind CSS work with Gutenberg blocks */
+.wp-block {
+    box-sizing: border-box;
+}

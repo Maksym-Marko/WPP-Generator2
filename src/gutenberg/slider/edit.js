@@ -25,7 +25,7 @@ export default function edit({ attributes, setAttributes }) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__('Multiple Slider Section Settings', metadata.textdomain)}>
-					<p>{__('Configure your multiple slider section settings here.', metadata.textdomain)}</p>
+					<div>{__('Configure your multiple slider section settings here.', metadata.textdomain)}</div>
 				</PanelBody>
 			</InspectorControls>
 
@@ -50,7 +50,7 @@ export default function edit({ attributes, setAttributes }) {
 					</div>
 				</div>
 
-				<div className="flex gap-4 pt-5 justify-center">
+				<div className="flex gap-4 pt-5 justify-center mxsfwn-slider-inner-blocks">
 					<InnerBlocks
 						allowedBlocks={ALLOWED_BLOCKS}
 						template={TEMPLATE}
