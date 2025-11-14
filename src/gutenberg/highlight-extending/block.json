@@ -2,18 +2,13 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "mxsfwn/highlight-extending",
-	"version": "1.4.1",
+	"version": "1.0.0",
 	"title": "Color Highlight",
 	"category": "widgets",
 	"icon": "admin-tools",
 	"description": "Extends core/paragraph blocks with additional styling options",
 	"keywords": ["extend", "paragraph", "styles", "customization"],
-	"supports": {
-		"html": false,
-		"align": false,
-		"color": false,
-		"spacing": false
-	},
+	"supports": {},
 	"attributes": {
 		"extendedSettings": {
 			"type": "object",
@@ -22,6 +17,5 @@
 			}
 		}
 	},
-	"style": "file:./style.css",
 	"textdomain": "wpp-generator-next"
 }

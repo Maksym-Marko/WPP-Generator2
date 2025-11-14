@@ -1,6 +1,6 @@
 {
 	"name": "mxsfwn-npm-handler",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"description": "NPM Handler",
 	"author": "Maksym Marko",
 	"license": "GPL-2.0-or-later",
@@ -21,7 +21,7 @@
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
 		"watch:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --minify",
 		"watch:js": "wp-scripts start --config webpack.gutenberg.config.js",
 		"build:js": "wp-scripts build --config webpack.gutenberg.config.js",
 		"start": "npm-run-all --parallel watch:css watch:js",
@@ -29,7 +29,7 @@
 	},
 	"scriptsForJavaScriptCompelling": {
 		"watch:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"build:css": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --minify",
 		"watch:js": "webpack --watch --mode=development --config webpack.custom.config.js",
 		"build:js": "webpack --mode=production --config webpack.custom.config.js",
 		"watch": "npm-run-all --parallel watch:css watch:js",
@@ -37,7 +37,7 @@
 	},
 	"scriptsForEntireCompelling": {
 		"tailwind-css:watch": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --watch",
-		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css",
+		"tailwind-css:build": "npx @tailwindcss/cli -i ./assets/css/style.css -o ./build/css/style.css --minify",
 		"gutenberg-js:watch": "wp-scripts start --config webpack.gutenberg.config.js",
 		"gutenberg-js:build": "wp-scripts build --config webpack.gutenberg.config.js",
 		"native-js:watch": "webpack --watch --mode=development --config webpack.custom.config.js",

@@ -2,7 +2,7 @@
 
 This plugin was generated using the [WPPG-NEXT Generator](https://wppg-next.markomaksym.com.ua/) - a comprehensive WordPress plugin boilerplate with modern development tools, Gutenberg blocks, REST API endpoints, and React frontend components.
 
-**Current Version**: WPPG Next Version 1.4.1 (Stable)
+**Current Version**: WPPG Next Version 1.4.2 (Stable)
 
 **Important**: The generator automatically creates unique prefixes for all classes, functions, and constants to prevent conflicts with other plugins. This ensures your plugin can coexist safely with any other WordPress plugins.
 
@@ -199,6 +199,7 @@ wpp-generator-next/
 ├── README.md
 ├── assets
 │   ├── css
+│   │   ├── custom.css
 │   │   └── style.css
 │   ├── gutenberg
 │   │   └── content-slider
@@ -483,8 +484,7 @@ wpp-generator-next/
 │       │   └── style.css
 │       ├── highlight-extending
 │       │   ├── block.json
-│       │   ├── index.js
-│       │   └── style.css
+│       │   └── index.js
 │       ├── image-cards
 │       │   ├── block.json
 │       │   ├── edit.js

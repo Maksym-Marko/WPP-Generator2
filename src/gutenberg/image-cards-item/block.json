@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "mxsfwn/image-cards-item",
-	"version": "1.4.1",
+	"version": "1.0.0",
 	"title": "Image Cards Item",
 	"parent": ["mxsfwn/image-cards"],
 	"category": "mxsfwn-wppgnext",

@@ -4,7 +4,6 @@ import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import './style.css';
 import metadata from './block.json';
 
 /**

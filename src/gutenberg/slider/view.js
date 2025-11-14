@@ -26,18 +26,15 @@ const mxsfwnSliderMultipleHorizontal = window.mxsfwnSliderMultipleHorizontal || 
 
             if (!$slider.length || !$slider.hasClass('slick-initialized')) return;
 
-            // Target only direct children, skip clones’ inner wrappers if desired (kept included for consistency)
             const $targets = $slider.find('.slick-slide > div');
 
             if (!$targets.length) return;
 
-            // Reset before measuring
             $targets.css('height', '');
 
-            // Measure
             let maxH = 0;
             $targets.each(function () {
-                const h = $(this).outerHeight(); // padding included, margin excluded
+                const h = $(this).outerHeight();
                 if (h > maxH) maxH = h;
             });
 
@@ -47,7 +44,6 @@ const mxsfwnSliderMultipleHorizontal = window.mxsfwnSliderMultipleHorizontal || 
         });
     },
 
-    // Simple debounce helper for resize
     _debounceTimer: null,
     debounceEqHeight: function (delay = 100) {
         clearTimeout(this._debounceTimer);
@@ -75,24 +71,25 @@ const mxsfwnSliderMultipleHorizontal = window.mxsfwnSliderMultipleHorizontal || 
     _bindSlickEqHeightEvents: function ($slider) {
         const self = this;
 
-        // Run on init and on various rerender-ish events
         $slider
             .on('init', function (e, slick) {
+
                 self.toggleNavigation(slick);
-                // Give the browser a tick in case images affect height
                 requestAnimationFrame(() => self.eqHeight());
                 setTimeout(() => self.eqHeight(), 0);
             })
             .on('reInit setPosition breakpoint afterChange', function () {
+
                 self.eqHeight();
             })
             .on('lazyLoaded', function () {
-                // When images load, heights can change
+
                 self.eqHeight();
             });
     },
 
     initSlider: function () {
+
         const self = this;
 
         const sections = $(this.sectionWrapper);
@@ -138,32 +135,27 @@ const mxsfwnSliderMultipleHorizontal = window.mxsfwnSliderMultipleHorizontal || 
                 ]
             });
 
-            // Safety: equalize once more after first layout pass
             setTimeout(() => self.eqHeight(), 50);
         });
 
-        // Recalculate on resize, debounced
         $(window).on('resize orientationchange', () => this.debounceEqHeight(120));
     },
 
     bindEvents: function () {
         const self = this;
 
-        // Previous button click
         $(this.prevButton).on('click', function (e) {
             e.preventDefault();
             $(self.sliderWrapper).slick('slickPrev');
             self.eqHeight();
         });
 
-        // Next button click
         $(this.nextButton).on('click', function (e) {
             e.preventDefault();
             $(self.sliderWrapper).slick('slickNext');
             self.eqHeight();
         });
 
-        // If content inside slides changes dynamically (AJAX), watch DOM and re-eq
         if (typeof MutationObserver !== 'undefined') {
             const mo = new MutationObserver(() => self.debounceEqHeight(120));
             mo.observe(document.body, { childList: true, subtree: true });
@@ -177,6 +169,6 @@ const mxsfwnSliderMultipleHorizontal = window.mxsfwnSliderMultipleHorizontal || 
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+
     mxsfwnSliderMultipleHorizontal.init();
 });
-
