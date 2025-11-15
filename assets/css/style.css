@@ -15,3 +15,8 @@
 .highlight-strong-green strong {
     background-color: green;
 }
+
+/* Deeded to trigger TW css styles for Editor */
+.wp-block {
+    box-sizing: border-box;
+}
