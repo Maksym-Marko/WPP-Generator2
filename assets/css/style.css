@@ -1,37 +1,17 @@
-@import "tailwindcss";
-@import "./custom.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    /* 480px */
-    --breakpoint-xs: 30rem;
-    /* 640px */
-    --breakpoint-sm: 40rem;
-    /* 768px */
-    --breakpoint-md: 48rem;
-    /* 992px */
-    --breakpoint-lg: 62rem;
-    /* 1200px */
-    --breakpoint-xl: 75rem;
-    /* 1360px */
-    --breakpoint-xxl: 85rem;
+/* Custom Gutenberg block mxsfwn/highlight-extending */
+.highlight-strong-yellow strong {
+    background-color: yellow;
+}
 
-    /* grid columns 13–20 */
-    --grid-cols-13: repeat(13, minmax(0, 1fr));
-    --grid-cols-14: repeat(14, minmax(0, 1fr));
-    --grid-cols-15: repeat(15, minmax(0, 1fr));
-    --grid-cols-16: repeat(16, minmax(0, 1fr));
-    --grid-cols-17: repeat(17, minmax(0, 1fr));
-    --grid-cols-18: repeat(18, minmax(0, 1fr));
-    --grid-cols-19: repeat(19, minmax(0, 1fr));
-    --grid-cols-20: repeat(20, minmax(0, 1fr));
+.highlight-strong-blue strong {
+    background-color: blue;
+    color: white;
+}
 
-    /* col-span utilities 13–20 */
-    --grid-col-span-13: span 13 / span 13;
-    --grid-col-span-14: span 14 / span 14;
-    --grid-col-span-15: span 15 / span 15;
-    --grid-col-span-16: span 16 / span 16;
-    --grid-col-span-17: span 17 / span 17;
-    --grid-col-span-18: span 18 / span 18;
-    --grid-col-span-19: span 19 / span 19;
-    --grid-col-span-20: span 20 / span 20;
+.highlight-strong-green strong {
+    background-color: green;
 }
