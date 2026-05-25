@@ -7,7 +7,7 @@ Tested up to: 6.8
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-    WPPG Next Version:        1.4.4
+    WPPG Next Version:        1.4.5
     WPPG Next Author:         Maksym Marko
     WPPG Next Author Website: https://markomaksym.com.ua/
     WPPG Next Video Guide:    https://www.youtube.com/watch?v=2FY7lDoZ0k0

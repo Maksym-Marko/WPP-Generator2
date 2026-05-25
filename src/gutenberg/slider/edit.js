@@ -25,7 +25,7 @@ export default function edit({ attributes, setAttributes }) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__('Multiple Slider Section Settings', metadata.textdomain)}>
-					<div>{__('Configure your multiple slider section settings here.', metadata.textdomain)}</div>
+					<div>{__('Add 4+ slides.', metadata.textdomain)}</div>
 				</PanelBody>
 			</InspectorControls>
 
