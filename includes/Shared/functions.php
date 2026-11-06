@@ -94,12 +94,41 @@ if (!function_exists('mxsfwnView')) {
     }
 }
 
+if (!function_exists('mxsfwnSafeRedirect')) {
+    /**
+     * Safely redirect to a local URL and terminate execution.
+     *
+     * Issues a header-based redirect when output has not started yet, and
+     * falls back to a JSON-encoded (XSS-safe) client-side redirect only when
+     * headers were already sent. The caller is responsible for validating the
+     * destination with wp_validate_redirect() first.
+     *
+     * @param string $target   A URL already validated by wp_validate_redirect().
+     *
+     * @return void     Terminates the request.
+     */
+
+    function mxsfwnSafeRedirect($target)
+    {
+
+        if (!headers_sent()) {
+
+            wp_safe_redirect($target);
+        } else {
+
+            printf('<script>window.location.href=%s;</script>', wp_json_encode($target));
+        }
+
+        exit;
+    }
+}
+
 if (!function_exists('mxsfwnGoBack')) {
     /**
      * This function can be used for redirect purpose.
-     * 
-     * @param string $defaultUrl   This is a default url if HTTP_REFERER
-     *                             didn't specified.
+     *
+     * @param string $defaultUrl   This is a default url used when there is no
+     *                             valid referer to go back to.
      *
      * @return void     redirect to previous page or to default one.
      */
@@ -107,26 +136,30 @@ if (!function_exists('mxsfwnGoBack')) {
     function mxsfwnGoBack($defaultUrl)
     {
 
-        $backLink = isset($_SERVER['HTTP_REFERER']) ? wp_unslash($_SERVER['HTTP_REFERER']) : $defaultUrl;
+        $referer = wp_get_referer();
 
-        printf('<script>;window.location.href="%s";</script>', $backLink);
+        $target = wp_validate_redirect($referer ? $referer : $defaultUrl, $defaultUrl);
+
+        mxsfwnSafeRedirect($target);
     }
 }
 
 if (!function_exists('mxsfwnRedirectTo')) {
     /**
      * This function can be used for redirect purpose.
-     * 
-     * @param string $defaultUrl   This is a default url if HTTP_REFERER
-     *                             didn't specified.
      *
-     * @return void     redirect to previous page or to default one.
+     * @param string $url   The destination URL. Invalid or external URLs fall
+     *                      back to the admin area.
+     *
+     * @return void     redirect to the given local page.
      */
 
     function mxsfwnRedirectTo($url)
     {
 
-        printf('<script>;window.location.href="%s";</script>', $url);
+        $target = wp_validate_redirect($url, admin_url());
+
+        mxsfwnSafeRedirect($target);
     }
 }
 

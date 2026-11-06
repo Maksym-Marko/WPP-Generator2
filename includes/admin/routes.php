@@ -188,3 +188,33 @@ $router->get('ai-robots-table/action-ai-robot-bulk')
 
 // Render all the pages.
 $router->route();
+
+/**
+ * Process custom-table mutation actions early — on admin_init, before any
+ * admin output — so the controllers can issue a safe, header-based redirect
+ * and terminate. The matching admin pages stay registered above so the request
+ * resolves; we re-check the same capability here because admin_init runs before
+ * WordPress enforces the page capability.
+ */
+add_action('admin_init', function () {
+
+    if (!is_admin()) return;
+
+    $actionControllers = [
+        'action-ai-robot-store'                => 'ai-robots-table/action-ai-robot-store',
+        'action-ai-robot-update'               => 'ai-robots-table/action-ai-robot-update',
+        'action-ai-robot-trash-restore-delete' => 'ai-robots-table/action-ai-robot-trash-restore-delete',
+        'action-ai-robot-bulk'                 => 'ai-robots-table/action-ai-robot-bulk',
+    ];
+
+    $page = isset($_REQUEST['page']) && is_string($_REQUEST['page'])
+        ? sanitize_key(wp_unslash($_REQUEST['page']))
+        : '';
+
+    if (!isset($actionControllers[$page])) return;
+
+    // Match the capability these admin pages are registered with.
+    if (!current_user_can('manage_options')) return;
+
+    require_once MXSFWN_PLUGIN_ABS_PATH . 'includes/Admin/controllers/' . $actionControllers[$page] . '.php';
+});

@@ -90,15 +90,42 @@ abstract class AbstractRestRouteHandler implements RestRouteHandlerInterface
 
     /**
      * Check the user capability.
-     * 
+     *
      * @param $capability  Type of capability.
-     * 
+     *
      * @return bool
      */
     protected function verifyUserCapability($capability = 'edit_posts'): bool
     {
 
         return current_user_can($capability);
+    }
+
+    /**
+     * Validate that a post meta key belongs to this plugin's own namespace.
+     *
+     * Keys managed by this plugin are prefixed with "_" followed by the
+     * plugin's unique string (see MetaBox::setPostMetaKey()). Restricting
+     * writes to that namespace prevents endpoints from touching arbitrary or
+     * protected WordPress meta keys.
+     *
+     * @param mixed $metaKey   Raw meta key from the request.
+     *
+     * @return string|false    The sanitized key, or false if it is not managed
+     *                         by this plugin.
+     */
+    protected function sanitizePluginMetaKey($metaKey)
+    {
+
+        if (!is_string($metaKey)) return false;
+
+        $metaKey = sanitize_key(wp_unslash($metaKey));
+
+        $prefix = '_' . MXSFWN_PLUGIN_UNIQUE_STRING;
+
+        if ($metaKey === '' || strpos($metaKey, $prefix) !== 0) return false;
+
+        return $metaKey;
     }
 
     /**

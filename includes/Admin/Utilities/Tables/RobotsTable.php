@@ -136,24 +136,45 @@ class RobotsTable extends WP_List_Table
 
         $offset = 1 < $currentPage ? ($this->perPage * ($currentPage - 1)) : 0;
 
-        // Sortable
-        $order = isset($_GET['order']) ? trim(sanitize_text_field(wp_unslash($_GET['order']))) : 'desc';
+        // Sort direction — map to a fixed, supported value.
+        $order = 'DESC';
 
-        $orderBy = isset($_GET['orderby']) ? trim(sanitize_text_field(wp_unslash($_GET['orderby']))) : 'id';
+        if (isset($_GET['order']) && is_string($_GET['order']) && strtoupper(sanitize_text_field(wp_unslash($_GET['order']))) === 'ASC') {
 
-        if (!empty($_REQUEST['s'])) {
-
-            $this->searchSQL = "AND title LIKE '%" . esc_sql($this->wpdb()->esc_like(sanitize_text_field(wp_unslash($_REQUEST['s'])))) . "%' ";
+            $order = 'ASC';
         }
 
-        // Status
-        $itemStatus = isset($_GET['item-status']) ? trim(wp_unslash($_GET['item-status'])) : 'publish';
+        // Sort column — map the request to an allowed, real column name.
+        $allowedOrderBy = ['id', 'title', 'status', 'created_at'];
 
-        $status = "AND status = '$itemStatus'";
+        $orderBy = 'id';
+
+        if (isset($_GET['orderby']) && is_string($_GET['orderby'])) {
+
+            $requestedOrderBy = sanitize_key(wp_unslash($_GET['orderby']));
+
+            if (in_array($requestedOrderBy, $allowedOrderBy, true)) {
+
+                $orderBy = $requestedOrderBy;
+            }
+        }
+
+        // Search — bind the user value inside a prepared LIKE fragment.
+        if (!empty($_REQUEST['s']) && is_string($_REQUEST['s'])) {
+
+            $like = '%' . $this->wpdb()->esc_like(sanitize_text_field(wp_unslash($_REQUEST['s']))) . '%';
+
+            $this->searchSQL = $this->wpdb()->prepare(' AND title LIKE %s', $like);
+        }
+
+        // Status — whitelisted and bound.
+        $itemStatus = $this->currentItemStatus();
+
+        $status = $this->wpdb()->prepare(' AND status = %s', $itemStatus);
 
         // Get data
         $items = $this->wpdb()->get_results(
-            "SELECT * FROM {$this->table} WHERE 1 = 1 {$status} {$this->searchSQL}" .
+            "SELECT * FROM {$this->table} WHERE 1 = 1{$status}{$this->searchSQL} " .
                 $this->wpdb()->prepare("ORDER BY {$orderBy} {$order} LIMIT %d OFFSET %d;", $this->perPage, $offset),
             ARRAY_A
         );
@@ -175,7 +196,7 @@ class RobotsTable extends WP_List_Table
         ];
 
         // Set the pagination
-        $count = $this->wpdb()->get_var("SELECT COUNT(id) FROM {$this->table} WHERE 1 = 1 {$status} {$this->searchSQL};");
+        $count = (int) $this->wpdb()->get_var("SELECT COUNT(id) FROM {$this->table} WHERE 1 = 1{$status}{$this->searchSQL};");
 
         $this->set_pagination_args(
             [
@@ -184,6 +205,30 @@ class RobotsTable extends WP_List_Table
                 'total_pages' => ceil($count / $this->perPage),
             ]
         );
+    }
+
+    /**
+     * Return the current, whitelisted item status from the request.
+     * Safely handles missing, invalid and array inputs.
+     *
+     * @return string      'publish' (default) or 'trash'.
+     */
+    protected function currentItemStatus(): string
+    {
+
+        $allowed = ['publish', 'trash'];
+
+        if (isset($_GET['item-status']) && is_string($_GET['item-status'])) {
+
+            $status = sanitize_key(wp_unslash($_GET['item-status']));
+
+            if (in_array($status, $allowed, true)) {
+
+                return $status;
+            }
+        }
+
+        return 'publish';
     }
 
     /**
@@ -263,7 +308,7 @@ class RobotsTable extends WP_List_Table
     public function column_id($item): void
     {
 
-        echo $item['id'];
+        echo esc_html($item['id']);
     }
 
     /**
@@ -290,10 +335,10 @@ class RobotsTable extends WP_List_Table
         if ($can_edit) {
 
             $output .= sprintf(
-                '<a href="%s&edit-item=%s">%s</a>',
+                '<a href="%s&edit-item=%d">%s</a>',
                 esc_url($singleRobotUrl),
-                $item['id'],
-                $item['title']
+                absint($item['id']),
+                esc_html($item['title'])
             );
 
             $actionUrl = function ($action) use ($robotsActionsUrl, $item) {
@@ -304,7 +349,7 @@ class RobotsTable extends WP_List_Table
                 ), $action, "{$this->uniqueString}_nonce"));
             };
 
-            if (isset($_GET['item-status']) && trim(wp_unslash($_GET['item-status'])) === 'trash') {
+            if ($this->currentItemStatus() === 'trash') {
 
                 $actions['restore'] = sprintf(
                     '<a aria-label="%s" href="%s">%s</a>',
@@ -353,7 +398,7 @@ class RobotsTable extends WP_List_Table
             );
         } else {
 
-            $output .= $item['title'];
+            $output .= esc_html($item['title']);
         }
 
         $output .= '</strong>';
@@ -373,7 +418,9 @@ class RobotsTable extends WP_List_Table
 
         $length = 30;
 
-        echo strlen($item['description']) <= $length ? $item['description'] : substr($item['description'], 0, $length) . '...';
+        $description = strlen($item['description']) <= $length ? $item['description'] : substr($item['description'], 0, $length) . '...';
+
+        echo esc_html($description);
     }
 
     /**
@@ -386,7 +433,7 @@ class RobotsTable extends WP_List_Table
     public function column_created_at($item): void
     {
 
-        echo $item['created_at'];
+        echo esc_html($item['created_at']);
     }
 
     /**
@@ -402,7 +449,7 @@ class RobotsTable extends WP_List_Table
 
         if (!current_user_can('edit_posts')) return $action;
 
-        if (isset($_GET['item-status']) && trim(wp_unslash($_GET['item-status'])) === 'trash') {
+        if ($this->currentItemStatus() === 'trash') {
 
             $action['restore'] = __('Restore Items', 'wpp-generator-next');
             $action['delete']  = __('Delete Permanently', 'wpp-generator-next');
@@ -448,7 +495,7 @@ class RobotsTable extends WP_List_Table
     public function no_items(): void
     {
 
-        if (isset($_GET['item-status']) && trim(wp_unslash($_GET['item-status'])) === 'trash') {
+        if ($this->currentItemStatus() === 'trash') {
 
             esc_html_e('No items found in trash.', 'wpp-generator-next');
         } else {
@@ -466,7 +513,7 @@ class RobotsTable extends WP_List_Table
     protected function get_views(): array
     {
 
-        $itemStatus    = isset($_GET['item-status']) ? trim(wp_unslash($_GET['item-status'])) : 'publish';
+        $itemStatus    = $this->currentItemStatus();
         $publishNumber = $this->wpdb()->get_var("SELECT COUNT(id) FROM {$this->table} WHERE status='publish';");
         $trashNumber   = $this->wpdb()->get_var("SELECT COUNT(id) FROM {$this->table} WHERE status='trash';");
         $url           = admin_url("admin.php?page={$this->mainMenuSlug}");

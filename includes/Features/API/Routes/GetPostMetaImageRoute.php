@@ -34,15 +34,6 @@ class GetPostMetaImageRoute extends AbstractRestRouteHandler
             ], 401);
         }
 
-        $capabilityCheck = $this->verifyUserCapability('edit_posts');
-
-        if ($capabilityCheck !== true) {
-
-            return new WP_REST_Response([
-                'error' => 'Invalid CapabilityCheck.'
-            ], 401);
-        }
-
         $postId = (int) $request->get_param('postId');
         $post = get_post($postId);
 
@@ -53,7 +44,21 @@ class GetPostMetaImageRoute extends AbstractRestRouteHandler
             ], 404);
         }
 
-        $postMetaKey = $request->get_param('postMetaKey');
+        if (!current_user_can('edit_post', $postId)) {
+
+            return new WP_REST_Response([
+                'error' => 'Invalid CapabilityCheck.'
+            ], 401);
+        }
+
+        $postMetaKey = $this->sanitizePluginMetaKey($request->get_param('postMetaKey'));
+
+        if ($postMetaKey === false) {
+
+            return new WP_REST_Response([
+                'message' => 'Invalid post meta key.'
+            ], 403);
+        }
 
         $imageId = get_post_meta($postId, $postMetaKey, true);
 

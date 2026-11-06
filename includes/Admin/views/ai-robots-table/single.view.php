@@ -36,7 +36,7 @@ defined('ABSPATH') || exit;
                 type="hidden"
                 id="edit-item"
                 name="edit-item"
-                value="<?= $robot->id; ?>"
+                value="<?php echo esc_attr($robot->id); ?>"
             />
 
             <div>
@@ -50,7 +50,7 @@ defined('ABSPATH') || exit;
                     type="text"
                     name="title"
                     id="<?php echo esc_attr($robotsTable->getUniqueString()); ?>-title"
-                    value="<?= $robot->title; ?>"
+                    value="<?php echo esc_attr($robot->title); ?>"
                 />
             </div>
 
@@ -69,7 +69,7 @@ defined('ABSPATH') || exit;
                     id="<?php echo esc_attr($robotsTable->getUniqueString()); ?>-description"
                     rows="8"
                     cols="60"
-                ><?php esc_html_e(trim($robot->description)); ?></textarea>
+                ><?php echo esc_textarea(trim($robot->description)); ?></textarea>
             </div>
 
             <p class="mx-submit_button_wrap">

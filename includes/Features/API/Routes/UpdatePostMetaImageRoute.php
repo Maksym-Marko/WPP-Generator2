@@ -32,15 +32,6 @@ class UpdatePostMetaImageRoute extends AbstractRestRouteHandler
             ], 401);
         }
 
-        $capabilityCheck = $this->verifyUserCapability('edit_posts');
-
-        if ($capabilityCheck !== true) {
-
-            return new WP_REST_Response([
-                'error' => 'Invalid CapabilityCheck.'
-            ], 401);
-        }
-
         $postId = (int) $request->get_param('postId');
         $post = get_post($postId);
 
@@ -49,6 +40,13 @@ class UpdatePostMetaImageRoute extends AbstractRestRouteHandler
             return new WP_REST_Response([
                 'message' => 'Post does not exist.'
             ], 404);
+        }
+
+        if (!current_user_can('edit_post', $postId)) {
+
+            return new WP_REST_Response([
+                'error' => 'Invalid CapabilityCheck.'
+            ], 401);
         }
 
         $attributes = $request->get_param('attributes');
@@ -74,9 +72,27 @@ class UpdatePostMetaImageRoute extends AbstractRestRouteHandler
             ], 404);
         }
 
-        update_post_meta($postId, $attributes['postMetaKey'], intval($attributes['imageId']));
+        $postMetaKey = $this->sanitizePluginMetaKey($attributes['postMetaKey']);
 
-        $imageUrl = wp_get_attachment_url(intval($attributes['imageId']));
+        if ($postMetaKey === false) {
+
+            return new WP_REST_Response([
+                'message' => 'Invalid post meta key.'
+            ], 403);
+        }
+
+        $imageId = intval($attributes['imageId']);
+
+        $imageUrl = $imageId > 0 ? wp_get_attachment_url($imageId) : false;
+
+        if (!$imageUrl) {
+
+            return new WP_REST_Response([
+                'message' => 'Invalid image.'
+            ], 400);
+        }
+
+        update_post_meta($postId, $postMetaKey, $imageId);
 
         return new WP_REST_Response([
             'status'   => 'success',
