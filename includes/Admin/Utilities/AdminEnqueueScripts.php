@@ -96,5 +96,19 @@ class AdminEnqueueScripts
             [],
             $this->version
         );
+
+        // AI robot single/edit screen style (page=ai-robot-edit).
+        // Source: src/admin/ai-robot-edit/ -> build/admin/ai-robot-edit/index.css
+        $currentPage = isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : '';
+
+        if ('ai-robot-edit' === $currentPage) {
+
+            wp_enqueue_style(
+                "{$this->uniqueString}-ai-robot-edit",
+                $this->pluginUrl . 'build/admin/ai-robot-edit/index.css',
+                [],
+                $this->version
+            );
+        }
     }
 }
