@@ -34,7 +34,7 @@ filename and the prefix/text-domain strings differ.
 
 ## Architecture & where things load
 
-- Main file (`<text-domain>.php`) defines constants, then on `PHP >= 7.4` loads
+- Main file (`<text-domain>.php`) defines constants, then on `PHP >= 8.4` loads
   `vendor/autoload.php`, `includes/Shared/functions.php`, `install.php`,
   `index.php`.
 - `index.php` boots `<Prefix>WPPGNext\WppGenerator`, which constructs three hubs:

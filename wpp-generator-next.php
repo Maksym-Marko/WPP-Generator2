@@ -5,8 +5,8 @@
  * Plugin URI:        https://markomaksym.com.ua/wp-plugin-skeleton-generator/
  * Description:       Brief description
  * Version:           1.0
- * Requires at least: 5.9
- * Requires PHP:      7.4
+ * Requires at least: 6.9
+ * Requires PHP:      8.4
  * Author:            This Plugin Author
  * Author URI:        https://github.com/Maksym-Marko
  * Text Domain:       wpp-generator-next
@@ -80,9 +80,9 @@ if (!defined('MXSFWN_PLUGIN_ABS_PATH')) {
 }
 
 /**
- * Run plugin if PHP >= 7.4
+ * Run plugin if PHP >= 8.4
  */
-if (PHP_VERSION_ID >= 70400) {
+if (PHP_VERSION_ID >= 80400) {
 
     /**
      * Autoload.

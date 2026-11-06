@@ -60,7 +60,7 @@ Notes verified in converter code:
 - `wpp-generator-next.php:1` — main plugin file. Declares the header, guards with
   `defined('ABSPATH') || exit`, defines constants (`MXSFWN_PLUGIN_VERSION` =
   `time()` — **set to a static version before shipping**, `…_UNIQUE_STRING` =
-  `mxsfwn`, `…_PATH/_URL/_BASE_NAME/_ABS_PATH`), then, only if `PHP >= 7.4`,
+  `mxsfwn`, `…_PATH/_URL/_BASE_NAME/_ABS_PATH`), then, only if `PHP >= 8.4`,
   requires `vendor/autoload.php`, `includes/Shared/functions.php`, `install.php`,
   and `index.php`.
 - `index.php:1` — instantiates `MXSFWNWPPGNext\WppGenerator` and loads the text

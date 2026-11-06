@@ -14,5 +14,12 @@
             "email": "markomaksym@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.4"
+    },
+    "config": {
+        "platform": {
+            "php": "8.4.0"
+        }
+    }
 }

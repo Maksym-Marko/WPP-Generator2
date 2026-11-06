@@ -27,8 +27,8 @@ The generator will create a customized version with unique prefixes and your spe
 📹 **[How to Use WPPG Next Plugin Generator](https://www.youtube.com/watch?v=2FY7lDoZ0k0)** - A short guide demonstrating how to use the WPPG Next plugin generator.
 
 ### Prerequisites
-- PHP 7.4 or higher
-- WordPress 5.9 or higher
+- PHP 8.4 or higher
+- WordPress 6.9 or higher
 - Node.js 16+ and npm
 - Composer
 
@@ -551,8 +551,8 @@ composer dump-autoload
 ```
 
 **WordPress activation errors:**
-- Check PHP version (requires 7.4+)
-- Verify WordPress version (requires 5.9+)
+- Check PHP version (requires 8.4+)
+- Verify WordPress version (requires 6.9+)
 - Check file permissions
 - Review error logs
 
