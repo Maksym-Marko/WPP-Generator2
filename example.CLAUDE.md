@@ -65,9 +65,22 @@ composer install   # PHP deps + autoloader
 npm install        # JS toolchain
 ```
 
-Summarize what succeeded and what needs attention; if a command fails, report the
-exact command and the blocker. Leave the headless app in `next-js/` alone unless
-the user also asks for it — it has its own dependencies (workflow 3).
+If a command fails, report the exact command and the blocker.
+
+After the dependency installs, offer optional Git setup. Ask the user: "Would you
+like me to initialize a Git repository for this plugin and set up its
+`.gitignore`?"
+
+- **If yes**, run `git init` from the plugin root (if the folder is already a Git
+  repository, reuse it rather than re-initializing). Once Git is ready, rename
+  `example.gitignore` to `.gitignore`. If `.gitignore` already exists, leave both
+  files in place and tell the user. If `git init` fails, report the error and
+  leave `example.gitignore` untouched.
+- **If no**, finish setup without running `git init` or renaming the file.
+
+Report the dependency-install results and the Git-setup results separately. Leave
+the headless app in `next-js/` alone unless the user also asks for it — it has its
+own dependencies (workflow 3).
 
 ### 2. Explain the features ("What can WPPG do?")
 
