@@ -19,9 +19,7 @@ paths:
 
 Read this before touching the bootstrap chain, the activation/deactivation/
 uninstall hooks, or when adding a new feature and wiring its admin/frontend
-parts. Also re-read the **Placeholder protection rule** in the root `CLAUDE.md`
-before renaming or moving anything — the external converter does blind
-`str_replace` on the `MXSFWN` / `mxsfwn` / `wpp-generator-next` tokens.
+parts.
 
 ## Load order (verified)
 
@@ -69,12 +67,12 @@ Pick the hub by layer, then follow the matching rule:
   (`mxsfwnView`, `mxsfwnRequireFrontendComponent`, …). `TasksManager.php` is the
   shared store backing the Tasks REST routes and the React app.
 
-## Generator / naming
+## Naming
 
-The converter that rewrites the placeholder tokens is **not in this checkout**
-(it lives at `../wpp-generator-next-wrapper/`). Only the tokens themselves are in
-scope here — see the token table in the root `CLAUDE.md`. Never invent a second
-prefix; reuse the existing tokens exactly so the converter rewrites them.
+Keep the plugin's own identifiers consistent everywhere: PHP constants
+`MXSFWN_PLUGIN_*`, namespace root `MXSFWNWPPGNext\`, lowercase prefix `mxsfwn`
+(shared helpers, asset handles, block names/category), and text domain
+`wpp-generator-next`. Don't introduce a second prefix.
 
 ## Verify
 
@@ -82,6 +80,6 @@ prefix; reuse the existing tokens exactly so the converter rewrites them.
 composer dump-autoload   # after adding/moving PHP classes
 npm run build            # rebuild JS/CSS before testing
 ```
-Activate the plugin in the local WordPress (`app/public`): activation should run
+Activate the plugin in a local WordPress install: activation should run
 the table migration without PHP notices in `debug.log`, and the plugin should
 deactivate/reactivate cleanly.

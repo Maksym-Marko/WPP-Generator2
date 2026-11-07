@@ -25,12 +25,12 @@ screenshots, or license.
 - **`license.txt`** — full GPLv2 text; the header `License`/`License URI` in
   `wpp-generator-next.php` and `readme.txt` must stay consistent with it.
 
-## Placeholder caution
+## Keep metadata consistent
 
-`readme.txt` carries converter tokens verbatim — `This Plugin Name`,
-`_markomaksym_` (in `Contributors:`), `Brief description`, `Long description`.
-**Do not alter these strings**; they are rewritten per generated plugin (see the
-token table in the root `CLAUDE.md`). Edit surrounding structure only.
+The plugin name, author, Contributors, and short/long description appear in both
+`readme.txt` and the header of `wpp-generator-next.php` — keep them in sync when
+you change one. Likewise the `License`/`License URI` in the header, `readme.txt`,
+and `license.txt` must all agree.
 
 ## Verify
 

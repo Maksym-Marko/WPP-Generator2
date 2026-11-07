@@ -30,8 +30,8 @@ Read this before adding or editing a custom block. **Extending an existing
 ## block.json conventions (keep the prefix)
 
 - `"name": "mxsfwn/<slug>"`, `"category": "mxsfwn-wppgnext"`,
-  `"textdomain": "wpp-generator-next"`. These prefixes are rewritten by the
-  converter — do not change their spelling.
+  `"textdomain": "wpp-generator-next"`. Keep these prefixes/text domain
+  consistent with the rest of the plugin.
 
 ## Patterns by block type (copy the closest example)
 

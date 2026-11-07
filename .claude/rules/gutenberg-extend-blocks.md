@@ -31,7 +31,7 @@ The extension registers JS filters only, gated to a target block
 
 Filter namespaces use the `mxsfwn/…` prefix (e.g.
 `mxsfwn/extending/add-attributes`) and labels use `metadata.textdomain` — keep
-the prefix/text domain intact (the converter rewrites them).
+the prefix/text domain consistent with the rest of the plugin.
 
 ## Build & verify
 

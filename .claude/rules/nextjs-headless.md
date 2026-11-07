@@ -34,11 +34,17 @@ npm install
 npm run dev        # http://localhost:3000   (also: build, start, lint)
 ```
 
+Before upgrading anything, check the installed versions against the latest
+(`npm outdated`) and report which are outdated, which updates are low-risk, and
+which are major-version migrations (Next.js, React). Apply upgrades only when the
+user asks. Reuse the existing REST contracts below; if the requested behavior
+isn't covered, name the gap before proposing a new endpoint.
+
 ## Environment (verified — `next-js/example.env`)
 
 Copy `example.env` → `.env` and set:
 
-- `REACT_APP_API_BASE_URL` — WordPress origin (e.g. `http://wpp-generator.local/`)
+- `REACT_APP_API_BASE_URL` — WordPress origin (e.g. `https://your-wordpress-site.com/`)
 - `MAIN_MENU_ID` — menu id passed to `/menu-items/<id>`
 - `HOME_PAGE_SLUG` — slug resolved on the home route (default `home`)
 
