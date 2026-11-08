@@ -69,7 +69,7 @@ class CreateDataTable
      * 
      * @return object      Return this object to chain in the future.
      */
-    public function varchar(string $columnName = 'name', int $length = 10, bool $notNull = false, string $default = NULL): object
+    public function varchar(string $columnName = 'name', int $length = 10, bool $notNull = false, ?string $default = NULL): object
     {
 
         $notNull = $notNull ? 'NOT NULL' : 'NULL';
@@ -136,7 +136,7 @@ class CreateDataTable
      * 
      * @return object      Return this object to chain in the future.
      */
-    public function datetime(string $columnName = 'created', string $default = NULL): object
+    public function datetime(string $columnName = 'created', ?string $default = NULL): object
     {
 
         $default = $default == NULL ? $this->datetime : $default;
